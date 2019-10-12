@@ -1,6 +1,6 @@
 {
   "name": "@ansonhkg/wordpress-api",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A utility library to fetch wordpress content through REST API.",
   "main": "./src/index.js",
   "scripts": {
