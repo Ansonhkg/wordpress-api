@@ -1,0 +1,26 @@
+{
+  "name": "@ansonhkg/wordpress-api",
+  "version": "0.0.0",
+  "description": "A utility library to fetch wordpress content through REST API.",
+  "main": "./src/index.js",
+  "scripts": {
+    "dev": "parcel ./src/index.html",
+    "test": "jest",
+    "publish:patch": "yarn version --patch && yarn publish",
+    "publish:minor": "yarn version --minor && yarn publish",
+    "publish:major": "yarn version --major && yarn publish"
+  },
+  "repository": "git@github.com:Ansonhkg/wordpress-api.git",
+  "author": "Anson Cheung <ansoncwork@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@babel/runtime": "^7.6.3",
+    "axios": "^0.19.0",
+    "jest": "^24.9.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@babel/plugin-transform-runtime": "^7.6.2"
+  }
+}
