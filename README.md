@@ -11,9 +11,8 @@ A utility library to fetch wordpress content through REST API.
 # Usage
 
 ```js
-const api = require('./api')
-const baseUrl = 'http://your-wordpress-api.com/wp-json/wp/v2';
-const wp = api.fetch(baseUrl);
+const api = require('@ansonhkg/wordpress-api')
+const wp = api.fetch('http://your-wordpress-api.com/wp-json/wp/v2');
 
 async function run () {
     // return top (default) 10 posts
@@ -33,3 +32,29 @@ async function run () {
 run();
 
 ```
+
+# Vue - Install it globally
+
+```javascript
+import wp from '@ansonhkg/wordpress-api'
+
+Vue.use({
+  install(Vue) {
+    Vue.prototype.$wp = wp.fetch('http://your-wordpress-api.com/wp-json/wp/v2')
+  },
+})
+
+```
+
+Now, you can use 
+
+```js
+this.$wp.getPosts()
+
+// eg. in created hook
+async created(){
+    const data = await this.$wp.getPosts();
+}
+```
+
+in your Vue component.

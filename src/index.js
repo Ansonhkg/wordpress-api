@@ -1,5 +1,5 @@
 const api = require("./api");
-const wp = api.fetch("http://checkoutafrica.com/wp-json/wp/v2");
+// const wp = api.fetch("http://checkoutafrica.com/wp-json/wp/v2");
 
 const _console = {
   log: data => console.log(JSON.stringify(data, null, 4))
@@ -14,6 +14,6 @@ const run = async () => {
   console.log(posts);
 };
 
-run();
+// run();
 
 module.exports = api;
