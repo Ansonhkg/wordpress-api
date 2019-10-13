@@ -1,3 +1,5 @@
+const axios = require("axios");
+
 /**
  * Return posts
  * @param { String } params
@@ -41,12 +43,30 @@ const getPostsByCategorySlug = async (URL, params) => {
   return result;
 };
 
+/**
+ * Extract categories from post object
+ * @param { Object } post
+ */
+const extractCategories = post => {
+  return post._embedded["wp:term"][0];
+};
+
+/**
+ * Extract tags from post object
+ * @param { Object } post
+ */
+const extractTags = post => {
+  return post._embedded["wp:term"][1];
+};
+
 module.exports = {
   fetch: URL => {
     return {
       getPosts: params => getPosts(URL, params),
       getCategories: params => getCategories(URL, params),
-      getPostsByCategorySlug: params => getPostsByCategorySlug(URL, params)
+      getPostsByCategorySlug: params => getPostsByCategorySlug(URL, params),
+      extractCategories: post => extractCategories(post),
+      extractTags: post => extractTags(post)
     };
   }
 };

@@ -27,6 +27,13 @@ async function run () {
         page: 1,
         per_page: 5
     });
+
+    // get categories by extracting it from a post object
+    var post = posts.data[0]
+    var categories = wp.extractCategories(post)
+
+    // get tags by extracting it from post object
+    var tags = wp.extractTags(post)
 }
 
 run();
