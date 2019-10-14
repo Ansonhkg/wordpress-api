@@ -67,6 +67,14 @@ const extractAuthor = post => {
   return post._embedded.author[0];
 };
 
+/**
+ * Extract images from post object
+ * @param { Object } post
+ */
+const extractImages = post => {
+  return post._embedded["wp:featuredmedia"][0]["media_details"]["sizes"];
+};
+
 module.exports = {
   fetch: URL => {
     return {
@@ -75,7 +83,8 @@ module.exports = {
       getPostsByCategorySlug: params => getPostsByCategorySlug(URL, params),
       extractCategories: post => extractCategories(post),
       extractTags: post => extractTags(post),
-      extractAuthor: post => extractAuthor(post)
+      extractAuthor: post => extractAuthor(post),
+      extractImages: post => extractImages(post)
     };
   }
 };

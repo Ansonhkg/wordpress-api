@@ -26,6 +26,9 @@ const run = async () => {
 
   var author = wp.extractAuthor(post);
   console.log("Author:", author);
+
+  var images = wp.extractImages(post);
+  console.log("Images:", images);
 };
 
 run();

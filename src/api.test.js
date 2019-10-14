@@ -56,3 +56,15 @@ test("extractAuthor() from post", async () => {
   expect(author.hasOwnProperty("link")).toBe(true);
   expect(author.hasOwnProperty("slug")).toBe(true);
 });
+
+test("extractImages() from post", async () => {
+  var posts = await wp.getPosts("&per_page=1");
+  var post = posts.data[0];
+
+  var images = wp.extractImages(post);
+  expect(images.hasOwnProperty("thumbnail")).toBe(true);
+  expect(images.hasOwnProperty("medium")).toBe(true);
+  expect(images.hasOwnProperty("medium_large")).toBe(true);
+  expect(images.hasOwnProperty("large")).toBe(true);
+  expect(images.hasOwnProperty("full")).toBe(true);
+});
