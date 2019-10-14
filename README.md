@@ -15,6 +15,7 @@ const api = require('@ansonhkg/wordpress-api')
 const wp = api.fetch('http://your-wordpress-api.com/wp-json/wp/v2');
 
 async function run () {
+
     // return top (default) 10 posts
     var posts = await wp.getPosts("&slug=your-post-title-most-likely");
     
@@ -28,12 +29,16 @@ async function run () {
         per_page: 5
     });
 
-    // get categories by extracting it from a post object
+    // extract categories from Post object
     var post = posts.data[0]
     var categories = wp.extractCategories(post)
 
-    // get tags by extracting it from post object
+    // extract tags from Post object
+    var post = posts.data[0]
     var tags = wp.extractTags(post)
+
+    // extract author info from Post object
+    var post = posts.data[0]
 }
 
 run();

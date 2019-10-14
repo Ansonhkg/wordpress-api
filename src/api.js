@@ -59,6 +59,14 @@ const extractTags = post => {
   return post._embedded["wp:term"][1];
 };
 
+/**
+ * Extract author from post object
+ * @param { Object } post
+ */
+const extractAuthor = post => {
+  return post._embedded.author[0];
+};
+
 module.exports = {
   fetch: URL => {
     return {
@@ -66,7 +74,8 @@ module.exports = {
       getCategories: params => getCategories(URL, params),
       getPostsByCategorySlug: params => getPostsByCategorySlug(URL, params),
       extractCategories: post => extractCategories(post),
-      extractTags: post => extractTags(post)
+      extractTags: post => extractTags(post),
+      extractAuthor: post => extractAuthor(post)
     };
   }
 };

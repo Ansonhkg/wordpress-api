@@ -29,15 +29,30 @@ test("extractCategories() from post", async () => {
   expect(category.hasOwnProperty("taxonomy")).toBe(true);
 });
 
-// test("extractTags() from post", async () => {
-//   var post = await wp.getPosts("&per_page=1");
+test("extractTags() from post", async () => {
+  var posts = await wp.getPosts("&per_page=1");
+  var post = posts.data[0];
 
-//   var tags = wp.extractTags(post.data[0]);
-//   expect(Array.isArray(tags)).toBe(true);
+  var tags = wp.extractTags(post);
+  expect(Array.isArray(tags)).toBe(true);
 
-//   var tag = tags[0];
-//   expect(tag.hasOwnProperty("id")).toBe(true);
-//   expect(tag.hasOwnProperty("name")).toBe(true);
-//   expect(tag.hasOwnProperty("slug")).toBe(true);
-//   expect(tag.hasOwnProperty("taxonomy")).toBe(true);
-// });
+  // If this post has tags
+  if (tags.length > 0) {
+    var tag = tags[0];
+    expect(tag.hasOwnProperty("id")).toBe(true);
+    expect(tag.hasOwnProperty("name")).toBe(true);
+    expect(tag.hasOwnProperty("link")).toBe(true);
+    expect(tag.hasOwnProperty("slug")).toBe(true);
+  }
+});
+
+test("extractAuthor() from post", async () => {
+  var posts = await wp.getPosts("&per_page=1");
+  var post = posts.data[0];
+
+  var author = wp.extractAuthor(post);
+  expect(author.hasOwnProperty("id")).toBe(true);
+  expect(author.hasOwnProperty("name")).toBe(true);
+  expect(author.hasOwnProperty("link")).toBe(true);
+  expect(author.hasOwnProperty("slug")).toBe(true);
+});
