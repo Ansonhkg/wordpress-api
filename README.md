@@ -39,6 +39,7 @@ async function run () {
 
     // extract author info from Post object
     var post = posts.data[0]
+    var author = wp.extractAuthor(post)
 }
 
 run();
